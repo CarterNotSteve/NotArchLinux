@@ -1,6 +1,7 @@
 import time
 import ctools
 import os
+import shutil
 """"
 ctools.util.print("Booting kernel processes...\n")
 time.sleep(4)
@@ -91,10 +92,11 @@ while not guest:
     if allcmd[0] == "mv":
         try:
             if allcmd[2] != "..":
-                os.rename("filesystem"+PATH+"/"+allcmd[1], "filesystem"+PATH+"/"+allcmd[2])
+                shutil.move("filesystem/"+PATH+allcmd[1], "filesystem/"+PATH+allcmd[2])
+                ctools.util.print("filesystem/"+PATH+allcmd[2]+"\n")
 
         except:
-            ctools.util.print("dev messed up here!")
+            ctools.util.print("dev messed up here!\n")
 
     if cmd == "clear":
         os.system('clear')

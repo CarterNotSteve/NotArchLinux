@@ -101,7 +101,12 @@ while not guest:
             ctools.util.print("dev messed up here!\n")
 
     elif cmd == "exit":
+        ctools.util.print("Goodbye.")
         break
 
     elif cmd == "clear":
         os.system('clear')
+
+    elif cmd == 'pw':
+        p=usr[1][3:]
+        

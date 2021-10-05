@@ -5,4 +5,4 @@ class util:
         sys.stdout.flush()
 
     def load(k):
-        return " ".join(open(k, "r+").readlines())
+        return open(k, "r+").readlines()

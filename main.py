@@ -25,6 +25,7 @@ reg=open('unypw.reg','r+')
 usr=reg.readlines()
 guest = True
 PATH="root"
+lia = "" # logged in as
 
 while guest:
     un=input("Username: ")
@@ -32,6 +33,11 @@ while guest:
 
     u=usr[0][3:]
     p=usr[1][3:]
+
+    # account: un // pw
+    accounts = {
+        u:p
+    }
 
     if un+"\n" == u and pw == p:
         ctools.util.print("Logged in!")
@@ -108,5 +114,19 @@ while not guest:
         os.system('clear')
 
     elif cmd == 'pw':
-        p=usr[1][3:]
-        
+        with open("unypw.reg", "r+") as f:
+            k = ctools.util.load("unypw.reg")
+            k.pop(1)
+            k.append("pw=")
+            x = input("New Password:")
+            if (input("Confirm new: ") == x):
+                k.append(x)
+
+            else:
+                print("Passwords do not match.")
+
+            for i in k:
+                f.write(i)
+
+            del x
+            del k

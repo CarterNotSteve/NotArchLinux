@@ -41,7 +41,7 @@ while guest:
 
     if un+"\n" == u and pw == p:
         ctools.util.print("Logged in!")
-        time.sleep(3)
+        time.sleep(1.5)
         os.system('clear')
         guest = False
 
@@ -124,6 +124,25 @@ while not guest:
 
             else:
                 print("Passwords do not match.")
+
+            for i in k:
+                f.write(i)
+
+            del x
+            del k
+
+
+    elif cmd == 'un':
+        with open("unypw.reg", "r+") as f:
+            k = ctools.util.load("unypw.reg")
+            k.pop(0)
+            k.append("un=")
+            x = input("New Username:")
+            if (input("Confirm new: ") == x):
+                k.append(x)
+
+            else:
+                print("Names do not match.")
 
             for i in k:
                 f.write(i)
